@@ -18,7 +18,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<EventSummaryDto>>> GetUpcomingEvents()
+    public async Task<IActionResult> GetUpcomingEvents()
     {
         try
         {
@@ -33,7 +33,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<EventDto>> GetEvent(int id)
+    public async Task<IActionResult> GetEvent(int id)
     {
         try
         {
@@ -51,7 +51,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<EventDto>> CreateEvent(CreateEventDto dto)
+    public async Task<IActionResult> CreateEvent(CreateEventDto dto)
     {
         try
         {
@@ -70,7 +70,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<EventDto>> UpdateEvent(int id, UpdateEventDto dto)
+    public async Task<IActionResult> UpdateEvent(int id, UpdateEventDto dto)
     {
         try
         {

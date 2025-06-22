@@ -18,7 +18,7 @@ public class SpeakersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<SpeakerDto>>> GetAllSpeakers()
+    public async Task<IActionResult> GetAllSpeakers()
     {
         try
         {
@@ -33,7 +33,7 @@ public class SpeakersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<SpeakerDto>> GetSpeaker(int id)
+    public async Task<IActionResult> GetSpeaker(int id)
     {
         try
         {
@@ -51,7 +51,7 @@ public class SpeakersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<SpeakerDto>> CreateSpeaker(CreateSpeakerDto dto)
+    public async Task<IActionResult> CreateSpeaker(CreateSpeakerDto dto)
     {
         try
         {
@@ -66,7 +66,7 @@ public class SpeakersController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<SpeakerDto>> UpdateSpeaker(int id, UpdateSpeakerDto dto)
+    public async Task<IActionResult> UpdateSpeaker(int id, UpdateSpeakerDto dto)
     {
         try
         {

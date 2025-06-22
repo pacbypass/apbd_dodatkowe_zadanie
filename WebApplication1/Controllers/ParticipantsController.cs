@@ -18,7 +18,7 @@ public class ParticipantsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ParticipantDto>>> GetAllParticipants()
+    public async Task<IActionResult> GetAllParticipants()
     {
         try
         {
@@ -33,7 +33,7 @@ public class ParticipantsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<ParticipantDto>> GetParticipant(int id)
+    public async Task<IActionResult> GetParticipant(int id)
     {
         try
         {
@@ -51,7 +51,7 @@ public class ParticipantsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<ParticipantDto>> CreateParticipant(CreateParticipantDto dto)
+    public async Task<IActionResult> CreateParticipant(CreateParticipantDto dto)
     {
         try
         {
@@ -66,7 +66,7 @@ public class ParticipantsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<ParticipantDto>> UpdateParticipant(int id, UpdateParticipantDto dto)
+    public async Task<IActionResult> UpdateParticipant(int id, UpdateParticipantDto dto)
     {
         try
         {
@@ -102,7 +102,7 @@ public class ParticipantsController : ControllerBase
     }
 
     [HttpGet("{id}/report")]
-    public async Task<ActionResult<ParticipantReportDto>> GetParticipantReport(int id)
+    public async Task<IActionResult> GetParticipantReport(int id)
     {
         try
         {
