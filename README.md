@@ -41,7 +41,7 @@ curl -X POST "http://localhost:1337/api/events" \
 # sprawdzamy czy event zostal utworzony
 curl -X GET "http://localhost:1337/api/events/3"
 ```
-**Oczekiwany rezultat**: Status 201 Created, zwrócone dane wydarzenia 
+Oczekiwany rezultat: Status 201 Created, zwrócone dane wydarzenia 
 
 #### Próbujemy stworzyć wydarzenie z przeszłą datą
 ```bash
@@ -54,7 +54,7 @@ curl -X POST "http://localhost:1337/api/events" \
     "maxParticipants": 10
   }'
 ```
-**Oczekiwany rezultat**: Status 400 Bad Request, komunikat błędu walidacji // Event date cannot be in the past%
+Oczekiwany rezultat: Status 400 Bad Request, komunikat błędu walidacji // Event date cannot be in the past%
 
 ---
 
@@ -67,7 +67,7 @@ curl -X POST "http://localhost:1337/api/events/3/speakers/3"
 # sprawdzamy czy speaker zostal przypisany
 curl -X GET "http://localhost:1337/api/events/3"
 ```
-**Oczekiwany rezultat**: Status 200 OK
+Oczekiwany rezultat: Status 200 OK
 
 #### Przypisanie drugiego prelegenta do tego samego wydarzenia
 ```bash
@@ -90,7 +90,7 @@ curl -X POST "http://localhost:1337/api/events/3/speakers/4"
 # sprawdzamy czy drugi speaker zostal przypisany
 curl -X GET "http://localhost:1337/api/events/3"
 ```
-**Oczekiwany rezultat**: Status 200 OK (wielokrotne przypisanie dozwolone)
+Oczekiwany rezultat: Status 200 OK (wielokrotne przypisanie dozwolone)
 
 #### Konflikt czasowy - prelegent w dwóch wydarzeniach jednocześnie
 ```bash
@@ -110,7 +110,7 @@ curl -X GET "http://localhost:1337/api/events/4"
 # probujemy przpisac tego samego speakera w tym samym czasie
 curl -X POST "http://localhost:1337/api/events/4/speakers/3"
 ```
-**Oczekiwany rezultat**: Status 400 Bad Request, komunikat o konflikcie czasowym // Speaker is already assigned to another event at the same time%
+Oczekiwany rezultat: Status 400 Bad Request, komunikat o konflikcie czasowym // Speaker is already assigned to another event at the same time%
 
 ---
 
@@ -123,13 +123,13 @@ curl -X POST "http://localhost:1337/api/events/3/participants/3"
 # sprawdzamy czy participant zostal zarejestrowany
 curl -X GET "http://localhost:1337/api/events/3"
 ```
-**Oczekiwany rezultat**: Status 200 OK
+Oczekiwany rezultat: Status 200 OK
 
 #### Próba ponownej rejestracji tego samego uczestnika
 ```bash
 curl -X POST "http://localhost:1337/api/events/3/participants/3"
 ```
-**Oczekiwany rezultat**: Status 400 Bad Request, komunikat o już istniejącej rejestracji // Participant is already registered for this event%
+Oczekiwany rezultat: Status 400 Bad Request, komunikat o już istniejącej rejestracji // Participant is already registered for this event%
 
 #### Rejestracja do wypełnionej pojemności
 ```bash
@@ -205,7 +205,7 @@ curl -X GET "http://localhost:1337/api/participants/8"
 # to powinno wyrzucic 400
 curl -X POST "http://localhost:1337/api/events/3/participants/8"
 ```
-**Oczekiwany rezultat**: Status 400 Bad Request, komunikat o braku wolnych miejsc // event is full
+Oczekiwany rezultat: Status 400 Bad Request, komunikat o braku wolnych miejsc // event is full
 
 ---
 
@@ -219,7 +219,7 @@ curl -X DELETE "http://localhost:1337/api/events/3/participants/4"
 curl -X GET "http://localhost:1337/api/events/3"
 curl -X GET "http://localhost:1337/api/participants/4/report"
 ```
-**Oczekiwany rezultat**: Status 200 ok
+Oczekiwany rezultat: Status 200 ok
 
 #### Próba anulowania na wydarzenie za mniej niż 24h
 ```bash
@@ -246,7 +246,7 @@ curl -X GET "http://localhost:1337/api/events/5"
 # nie dziala, nie mozna usunac
 curl -X DELETE "http://localhost:1337/api/events/5/participants/3"
 ```
-**Oczekiwany rezultat**: Status 400 Bad Request, komunikat o przekroczeniu 24h limitu // Cannot cancel participation within 24 hours of event start%
+Oczekiwany rezultat: Status 400 Bad Request, komunikat o przekroczeniu 24h limitu // Cannot cancel participation within 24 hours of event start%
 
 ---
 
@@ -256,7 +256,7 @@ curl -X DELETE "http://localhost:1337/api/events/5/participants/3"
 ```bash
 curl -X GET "http://localhost:1337/api/events"
 ```
-**Oczekiwany rezultat**: 
+Oczekiwany rezultat: 
 - Status 200 OK
 - Lista wydarzeń z potrzebnymi polami
 
@@ -264,7 +264,7 @@ curl -X GET "http://localhost:1337/api/events"
 ```bash
 curl -X GET "http://localhost:1337/api/events/3"
 ```
-**Oczekiwany rezultat**: Status 200 OK, szczegółowe dane wydarzenia
+Oczekiwany rezultat: Status 200 OK, szczegółowe dane wydarzenia
 
 ---
 
@@ -274,11 +274,11 @@ curl -X GET "http://localhost:1337/api/events/3"
 ```bash
 curl -X GET "http://localhost:1337/api/participants/3/report"
 ```
-**Oczekiwany rezultat**:
+Oczekiwany rezultat:
 - Status 200 OK i lista wydarzen uczestnika z potrzebnymi danymi
 
 #### Raport dla uczestnika bez rejestracji
 ```bash
 curl -X GET "http://localhost:1337/api/participants/999/report"
 ```
-**Oczekiwany rezultat**: Status 404 Not Found jesli nie istnieje lub pusta lista i 200
+Oczekiwany rezultat: Status 404 Not Found jesli nie istnieje lub pusta lista i 200
